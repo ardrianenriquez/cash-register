@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root "pages#index"
   get "pages/index"
 
-  resources :carts, only: [:create, :show] do
-    post :add_item, path: 'add-item', on: :member
+  resources :carts, only: [ :create, :show ] do
+    post :add_item, path: "add-item", on: :member
   end
 end

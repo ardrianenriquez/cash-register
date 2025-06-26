@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :add_item]
+  before_action :set_cart, only: [ :show, :add_item ]
 
   # To create cart and this will be used to add item to the cart that was created
   def create
