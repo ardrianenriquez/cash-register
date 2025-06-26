@@ -1,0 +1,52 @@
+<h1>Cash Register</h1>
+
+<p>
+  <button onclick="newCart()">New Cart</button>
+</p>
+
+<p>
+  <button onclick="addItem('GR1')">Add Green Tea</button>
+  <button onclick="addItem('SR1')">Add Strawberry</button>
+  <button onclick="addItem('CF1')">Add Coffee</button>
+</p>
+
+<pre id="output">Cart not loaded yet.</pre>
+
+<script>
+  let cartId = null;
+
+  function newCart() {
+    fetch("/carts", { method: "POST" })
+      .then(res => res.json())
+      .then(data => {
+        cartId = data.cart_id;
+        alert(`New cart created with ID: ${cartId}`);
+        showCart();
+      });
+  }
+
+  function addItem(code) {
+    if (!cartId) {
+      alert("Please create a cart first.");
+      return;
+    }
+
+    fetch(`/carts/${cartId}/add-item`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code })
+    })
+    .then(() => showCart());
+  }
+
+  function showCart() {
+    if (!cartId) return;
+
+    fetch(`/carts/${cartId}`)
+      .then(res => res.json())
+      .then(data => {
+        const formatted = JSON.stringify(data, null, 2);
+        document.getElementById("output").innerText = formatted;
+      });
+  }
+</script>
