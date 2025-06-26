@@ -41,3 +41,10 @@ Import this file into Postman to test:
 - Creating a cart
 - Adding items
 - Viewing cart totals
+
+## Future Enhancements
+### Admin Page for Promotions
+- Create, update, or delete promotions via a simple HTML interface
+- Toggle promotions on/off without touching the database
+
+This will allow non-technical users or testers to manage pricing rules without editing code or using Postman.
