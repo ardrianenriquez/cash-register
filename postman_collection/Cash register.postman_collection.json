@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "bc83139c-a18a-432b-90b6-d2fd55b5cd68",
+		"name": "Cash register",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16271253"
+	},
+	"item": [
+		{
+			"name": "Create cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"jsonData\r",
+							"// pm.environment.set(\"cart_id\", jsonData);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/carts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/carts/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add item to cart",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"code\": \"CF1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/carts/{{cart_id}}/add-item",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carts",
+						"{{cart_id}}",
+						"add-item"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

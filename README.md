@@ -1,24 +1,43 @@
-# README
+## Setup
+### Install gems
+```
+bundle install
+```
+### Setup database
+```
+rails db:create 
+rails db:migrate 
+rails db:seed
+```
+### Start the server
+```
+rails server
+```
+### Once the server is running, open your browser and go to:
+```
+http://localhost:3000
+```
+***Note: This will load the basic UI where you can test the cart functionality.***
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Using the Minimal UI
+The interface provides the following features:
+- New Cart: Generates a new cart with a unique ID.
+- Add Green Tea / Strawberry / Coffee: Adds the selected product to the active cart.
+- The cart contents and total price are displayed below the buttons and update in real-time.
 
-Things you may want to cover:
+***Note: You must create a cart first before adding items.***
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## RSpec Testing
+Run all tests:
+```
+rspec
+```
+## API Testing via Postman
+You can also test the endpoints using the included Postman collection:
+```
+postman_collection/Cash register.postman_collection.json
+```
+Import this file into Postman to test:
+- Creating a cart
+- Adding items
+- Viewing cart totals
